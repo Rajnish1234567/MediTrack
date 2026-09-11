@@ -1,5 +1,7 @@
 package com.airtribe.meditrack.entity;
 
+import com.airtribe.meditrack.validators.PersonalDetailValidator;
+
 public abstract class Person extends MedicalEntity {
 
     private String name;
@@ -20,7 +22,7 @@ public abstract class Person extends MedicalEntity {
     }
 
     public void setName(String name) {
-        Validator.validateName(name);
+        PersonalDetailValidator.validateName(name);
         this.name = name;
     }
 
@@ -29,7 +31,7 @@ public abstract class Person extends MedicalEntity {
     }
 
     public void setAge(int age) {
-        Validator.validateAge(age);
+        PersonalDetailValidator.validateAge(age);
         this.age = age;
     }
 
@@ -38,7 +40,7 @@ public abstract class Person extends MedicalEntity {
     }
 
     public void setPhone(String phone) {
-        Validator.validatePhone(phone);
+        PersonalDetailValidator.validatePhone(phone);
         this.phone = phone;
     }
 
@@ -47,7 +49,6 @@ public abstract class Person extends MedicalEntity {
     }
 
     public void setEmail(String email) {
-        Validator.validateEmail(email);
         this.email = email;
     }
 }
