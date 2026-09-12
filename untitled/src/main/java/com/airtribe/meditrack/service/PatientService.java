@@ -22,11 +22,25 @@ public class PatientService {
         return patient;
     }
 
+    public void updatePatient(int id, String name, int age, String phone, String email) {
+        Patient patient = getPatientById(id).get();
+        patient.setName(name);
+        patient.setAge(age);
+        patient.setPhone(phone);
+        patient.setEmail(email);
+    }
     public Optional<Patient> getPatientById(int id) {
         return patientStore.getAll()
                 .stream()
                 .filter(patient -> patient.getId() == id)
                 .findFirst();
+    }
+    public void removePatientById(int id) {
+         Optional<Patient> patientOpt = patientStore.getAll()
+                .stream()
+                .filter(p -> p.getId() == id)
+                .findFirst();
+        patientOpt.filter(patientStore::remove);
     }
 
     public List<Patient> searchPatient(String name) {
@@ -41,5 +55,9 @@ public class PatientService {
                 .stream()
                 .filter(patient -> patient.getAge() == age)
                 .toList();
+    }
+
+    public List<Patient> getAllPatient() {
+        return patientStore.getAll();
     }
 }
