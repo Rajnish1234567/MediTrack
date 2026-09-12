@@ -5,6 +5,10 @@ public class Patient extends Person implements Cloneable {
     private String bloodGroup;
     private Address address;
 
+    public Address getAddress() {
+        return this.address;
+    }
+
     public Patient(int id, String name, int age, String phone, String email, String bloodGroup, Address address) {
 
         super(id, name, age, phone, email);
